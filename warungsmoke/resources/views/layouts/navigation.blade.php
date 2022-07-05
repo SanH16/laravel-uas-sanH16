@@ -1,332 +1,98 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="sidebar-sticky pt-3">
-        @if(Auth::user()->jabatan == null)
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    <!-- Primary Navigation Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    </a>
+                </div>
 
-        @elseif(Auth::user()->jabatan == 'admin')
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/dashboard') }}">
-                    <span data-feather="home"></span>
-                    Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/profile') }}">
-                    <span data-feather="users"></span>
-                    Profile
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/user') }}">
-                    <span data-feather="users"></span>
-                    User
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pelanggan') }}">
-                    <span data-feather="users"></span>
-                    Pelanggan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/supplier') }}">
-                    <span data-feather="users"></span>
-                    Supplier
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/barang') }}">
-                    <span data-feather="shopping-cart"></span>
-                    Barang
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/gudang') }}">
-                    <span data-feather="layers"></span>
-                    Gudang
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/retur') }}">
-                    <span data-feather="layers"></span>
-                    Retur
-                </a>
-            </li>
-        </ul>
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('prodi.index')" :active="request()->routeIs('prodi.index')">
+                        Program Studi
+                    </x-nav-link>
+                </div>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted" hidden>
-            <span hidden>Reports</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report" hidden>
-                <span data-feather="plus-circle" hidden></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2" hidden>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_penjualan') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Penjualan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_pembelian') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembelian
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/laporan_pembayaran_hutang') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembayaran Hutang (under development)
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/laporan_pembayaran_piutang') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembayaran Piutang (under development)
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_barang_terlaris') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Barang Terlaris
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_pembeli_terbanyak') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembeli Terbanyak
-                </a>
-            </li>
-        </ul>
+            </div>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted">
-            <span>Pembelian</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="bar-chart-2" hidden></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pembelian') }}">
-                    <span data-feather="file"></span>
-                    Pembelian
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/lihat_pembelian') }}?pembayaran=cash">
-                    <span data-feather="file-text"></span>
-                    Lihat Pembelian Cash
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/lihat_pembelian') }}?pembayaran=kredit">
-                    <span data-feather="file-text"></span>
-                    Lihat Pembelian Kredit
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/hutang') }}" hidden>
-                    <span data-feather="file-text"></span>
-                    Lihat Hutang
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/piutang') }}" hidden>
-                    <span data-feather="file-text"></span>
-                    Lihat Piutang
-                </a>
-            </li>
-        </ul>
+            <!-- Settings Dropdown -->
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <div>{{ Auth::user()->name }}</div>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted">
-            <span>Penjualan</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="bar-chart-2" hidden></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/penjualan') }}">
-                    <span data-feather="file"></span>
-                    Penjualan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/lihat_penjualan') }}?pembayaran=cash">
-                    <span data-feather="file-text"></span>
-                    Lihat Penjualan Cash
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/lihat_penjualan') }}?pembayaran=kredit">
-                    <span data-feather="file-text"></span>
-                    Lihat Penjualan Kredit
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/hutang') }}" hidden>
-                    <span data-feather="file-text"></span>
-                    Lihat Hutang
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/piutang') }}" hidden>
-                    <span data-feather="file-text"></span>
-                    Lihat Piutang
-                </a>
-            </li>
-        </ul>
-        
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted">
-            <span>Retur</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="bar-chart-2" hidden></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/retur_pembelian') }}">
-                    <span data-feather="file"></span>
-                    Pembelian
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/retur_penjualan') }}">
-                    <span data-feather="file"></span>
-                    Penjualan
-                </a>
-            </li>
-        </ul>
-        @else
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/dashboard') }}">
-                    <span data-feather="home"></span>
-                    Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/user') }}">
-                    <span data-feather="users"></span>
-                    User
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pelanggan') }}">
-                    <span data-feather="users"></span>
-                    Pelanggan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/supplier') }}">
-                    <span data-feather="users"></span>
-                    Supplier
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/barang') }}">
-                    <span data-feather="shopping-cart"></span>
-                    Barang
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/beli') }}">
-                    <span data-feather="file"></span>
-                    Pembelian
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/jual') }}">
-                    <span data-feather="file"></span>
-                    Penjualan
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/retur') }}">
-                    <span data-feather="layers"></span>
-                    Retur
-                </a>
-            </li>
-        </ul>
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted">
-            <span>Reports</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle"></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_penjualan') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Penjualan
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_pembelian') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembelian
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/laporan_pembayaran_hutang') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembayaran Hutang (under development)
-                </a>
-            </li>
-            <li class="nav-item" hidden>
-                <a class="nav-link" href="{{ url('/laporan_pembayaran_piutang') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembayaran Piutang (under development)
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_barang_terlaris') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Barang Terlaris
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/laporan_pembeli_terbanyak') }}">
-                    <span data-feather="bar-chart-2"></span>
-                    Pembeli Terbanyak
-                </a>
-            </li>
-        </ul>
+                    <x-slot name="content">
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-1 mb-1 text-muted">
-            <span>Lihat</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="bar-chart-2"></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/pemesanan') }}">
-                    <span data-feather="file-text"></span>
-                    Lihat Pembelian
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/penjualan') }}">
-                    <span data-feather="file-text"></span>
-                    Lihat Penjualan
-                </a>
-            </li>
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/hutang') }}">
-                    <span data-feather="file-text"></span>
-                    Lihat Hutang
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/piutang') }}">
-                    <span data-feather="file-text"></span>
-                    Lihat Piutang
-                </a>
-            </li>
-        </ul>
-        @endif
+            <!-- Hamburger -->
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-gray-200">
+            <div class="px-4">
+                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+            </div>
+
+            <div class="mt-3 space-y-1">
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
+            </div>
+        </div>
     </div>
 </nav>
