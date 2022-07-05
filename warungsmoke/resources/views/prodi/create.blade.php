@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row pt-4">
             <div class="col">
-                <h2>Form Prodi</h2>
+                <CENTER><h2>INPUT DATA PRODUK</h2></CENTER>
                 @if (session()->has('info'))
                     <div class="alert alert-success">
                         {{ session()-> get ('info')}}
@@ -21,7 +21,7 @@
                 <form action="{{url('prodi/store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="nama">Nama</label>
+                        <label for="nama">Nama Produk</label>
                         <input type="text" name="nama" id="nama" class="form-control" 
                         value="{{ old('nama')}}">
                         @error('nama')
@@ -29,13 +29,13 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto">Foto/Logo</label>
+                        <label for="foto">Foto Produk</label>
                         <input type="file" name="foto" id="foto" class="form-control">
                         @error('foto')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+                    <button type="submit" class="btn btn-primary mt-2">SIMPAN</button>
                 </form>
             </div>
         </div>

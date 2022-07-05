@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <CENTER><h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('SMOKE TEAM ALERT') }}
+        </h2></CENTER>
     </x-slot>
     <div class="row pt-4">
         <div class="col">
-            <h2>Prodi</h2>
+            <CENTER><h2>SMOKE AREA</h2></CENTER>
 
             @if (session()->has('info'))
                     <div class="alert alert-success">
@@ -14,15 +14,15 @@
                     </div>
             @endif
                 <div class="d-md-flex justify-content-md-end">
-                    <a href="{{ route('prodi.create')}}" class="btn btn-primary">Tambah</a>
+                    <a href="{{ route('prodi.create')}}" class="btn btn-primary">INPUT DATA</a>
                 </div>
 
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Logo</th>
-                            <th>Aksi</th>
+                            <th>Nama Produk</th>
+                            <th>Contoh Produk</th>
+                            <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>
