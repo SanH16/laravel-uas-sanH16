@@ -21,6 +21,14 @@
                     <div class="text-danger"> {{ $message}} </div>
                 @enderror
             </div>
+
+            <div class="form-group">
+                <label for="foto">Foto Produk</label>
+                <input type="file" name="foto" id="foto" class="form-control">
+                @error('foto')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
             <button type="submit" class="btn btn-primary mt-2">SUBMIT</button>
         </form>
     </div>

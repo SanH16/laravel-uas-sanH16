@@ -16,6 +16,10 @@
                 <td>Nama Produk</td>
                 <td>{{ $prodi->nama }}</td>
             </tr>
+            <tr>
+                <td>Stok Produk</td>
+                <td>{{ $prodi->stok }}</td>
+            </tr>
         </table>
 
     </div>

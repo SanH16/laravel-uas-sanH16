@@ -42,10 +42,11 @@ class ProdiController extends Controller
 
         $prodi = new Prodi();
         $prodi->nama = $validateData['nama'];
+        $prodi->stok = $request['stok'];
         $prodi->foto = $nama_file;
         $prodi->save();
 
-        $request->session()->flash("info","Data prodi $prodi->nama berhasil disimpan!");
+        $request->session()->flash("info","Data barang berhasil disimpan!");
         return redirect()->route("prodi.create");
 
     }
@@ -62,13 +63,13 @@ class ProdiController extends Controller
         );
 
         Prodi::where('id', $prodi->id)->update($validateData);
-        $request->session()->flash("info","Data prodi $prodi->nama berhasil diubah!");
+        $request->session()->flash("info","Data barang berhasil diubah!");
         return redirect()->route("prodi.index");
 
     }
     public function destroy(Prodi $prodi)
     {
         $prodi->delete();
-        return redirect()->route('prodi.index')->with("info", "Prodi $prodi->nama berhasil dihapus");
+        return redirect()->route('prodi.index')->with("info", "Data barang berhasil dihapus");
     }
 }

@@ -13,12 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Halaman Utama') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('prodi.index')" :active="request()->routeIs('prodi.index')">
-                        Program Studi
+                        Menu Produk
                     </x-nav-link>
                 </div>
 

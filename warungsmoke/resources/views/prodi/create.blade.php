@@ -29,6 +29,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="nama">Stok Barang</label>
+                        <input type="text" name="stok" id="stok" class="form-control" 
+                        value="{{ old('nama')}}">
+                        @error('stok')
+                            <div class="text-denger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="foto">Foto Produk</label>
                         <input type="file" name="foto" id="foto" class="form-control">
                         @error('foto')
