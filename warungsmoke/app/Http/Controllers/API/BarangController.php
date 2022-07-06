@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Prodi;
+use App\Models\Barang;
 
-class ProdiController extends Controller
+class BarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $prodi = Prodi::all();
-        return $prodi;
+        $barang = Barang::all();
+        return $barang;
     }
 
     /**

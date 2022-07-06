@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterProdisTable extends Migration
+class AlterBarangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AlterProdisTable extends Migration
      */
     public function up()
     {
-        Schema::table('prodis', function (Blueprint $table) {
+        Schema::table('barangs', function (Blueprint $table) {
             $table->string("foto")->after("nama")->nullabel();
         });
     }
@@ -25,7 +25,7 @@ class AlterProdisTable extends Migration
      */
     public function down()
     {
-        Schema::table('prodis', function (Blueprint $table) {
+        Schema::table('barangs', function (Blueprint $table) {
             $table->dropColumn("foto");
         });
     }

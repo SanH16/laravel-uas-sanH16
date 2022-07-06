@@ -6,7 +6,10 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <tr>
+                        <td><img src="./public/image/Logorokok.png" class="ig"></td>
+                        <td></td>
+                    </tr>
                     </a>
                 </div>
 
@@ -17,7 +20,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('prodi.index')" :active="request()->routeIs('prodi.index')">
+                    <x-nav-link :href="route('barang.index')" :active="request()->routeIs('prodi.index')">
+                        Menu Produk
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('barang.create')" :active="request()->routeIs('prodi.create')">
                         Menu Produk
                     </x-nav-link>
                 </div>
