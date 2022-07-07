@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                     <tr>
-                        <td><img src="./public/image/Logorokok.png" class="ig"></td>
+                        
                         <td></td>
                     </tr>
                     </a>
@@ -16,7 +16,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Halaman Utama') }}
+                        {{ __('Menu Utama') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
@@ -27,7 +27,7 @@
 
                 <div class="hidden space-x-m sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('barang.create')" :active="request()->routeIs('prodi.create')">
-                        Menu Produk
+                        Input Menu Produk
                     </x-nav-link>
                 </div>
 
