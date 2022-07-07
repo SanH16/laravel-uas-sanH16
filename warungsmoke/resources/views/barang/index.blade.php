@@ -31,7 +31,7 @@
                                     <img src="{{ asset('storage/' .$item->foto) }}" alt="logo" width="100">
                                 </td>
                                 <CENTER><td>{{ $item->stok}}</td></CENTER>
-                                <CENTER><td>Rp.{{ $item->harga}}</td></CENTER>
+                                <CENTER><td>Rp{{ $item->harga}}</td></CENTER>
                                 <td>
                                     <form action="{{ route('barang.destroy', ['barang' => $item->id]) }}"
                                     method="POST">
