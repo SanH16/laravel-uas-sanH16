@@ -53,18 +53,11 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="foto">Foto Produk</label>
-                <input type="file" name="foto" id="foto" class="form-control">
-                @error('foto')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
             <button type="button" class="btn btn-primary mt-2" onclick="history.back(-1)">KEMBALI</button>
             <button type="submit" class="btn btn-primary mt-2">SUBMIT</button>
         </form>
     </div>
 </div>
-@endextends
+
 @endsection
 
