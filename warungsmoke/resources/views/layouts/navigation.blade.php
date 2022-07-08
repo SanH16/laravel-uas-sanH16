@@ -4,6 +4,18 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                    <tr>
+                        <a class="navbar-brand" href="#">
+                            <div>
+                                <img src="image/Logo21.png" width="70px"></a>
+                            </div>
+                            
+                    </tr>
+                    </a>
+                </div>
+
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
